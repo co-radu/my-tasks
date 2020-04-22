@@ -12,10 +12,6 @@ export class TaskService {
     }
 
     getTasks() : Observable<Task[]> {
-        return <Observable<Task[]>> this.http.get('https://agile-dusk-64287.herokuapp.com/api/items.json',
-        {
-            headers : new HttpHeaders({'Last-Modified': 'Wed, 06 Jul 2016 13:01:52 GMT'})
-        }
-        );
+        return <Observable<Task[]>> this.http.get('https://agile-dusk-64287.herokuapp.com/api/items.json');
     }
 }
