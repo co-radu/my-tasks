@@ -1,31 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { TaskService } from './tasks/tasks.service';
-import { Task } from './shared/models/task.model';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'my-tasks-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   title = 'My Tasks';
 
-  constructor(private taskService: TaskService){}
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
-    this.taskService.getTasks().subscribe(
-      (tasks: Task[]) => {
-        console.log(tasks);
-        tasks.forEach(
-          (task: Task) => {
-            console.log(task.label);
-          }
-        );
-      }
-    );
-
+  redirectTo(destination: string): void {
+    switch (destination) {
+      case 'Git-Hub':
+        window.open('https://github.com/co-radu', '_blank');
+        break;
+    }
   }
-
 }
-

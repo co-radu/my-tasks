@@ -1,11 +1,8 @@
 <mat-toolbar color="primary">
-  <span>My Tasks</span>  
+  <span>My Tasks</span>
+  <button mat-mini-fab (click)="redirectTo('Git-Hub')">
+      <img src="../assets/icons/github-icon.svg">
+  </button>
 </mat-toolbar>
 
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Sushi">
-  </mat-form-field>
-</form>
-
+<router-outlet></router-outlet>
