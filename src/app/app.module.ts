@@ -11,6 +11,7 @@ import { TaskService } from './task/task.service';
 import { TaskListComponent } from './task/list/task-list.component';
 import { DetailTaskComponent } from './task/detail/detail-task.component';
 import { AddTaskComponent } from './task/add-task/add-task.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AddTaskComponent } from './task/add-task/add-task.component';
     HttpClientModule,
     MaterialModule,
     BrowserModule,
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent],
   providers: [TaskService],

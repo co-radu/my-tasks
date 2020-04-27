@@ -1,9 +1,9 @@
 export class Task {
-    id: number;
+    id?: number;
     description: string;
     position: number;
     label: string;
     createdDate: Date;
-    updatedDate: Date;
+    updatedDate?: Date;
     isActive: boolean;
 }

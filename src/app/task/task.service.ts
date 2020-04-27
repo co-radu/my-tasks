@@ -21,8 +21,8 @@ export class TaskService {
         return this.http.get<Task>(this.url + '/api/items/' + id + '.json');
     }
 
-    addTask (task: Task): Observable<Task> {
-        return this.http.post<Task>(this.url + '/api/item.json', task);
+    addTask(task: Task): Observable<Task> {
+        return this.http.post<Task>(this.url + '/api/items.json', task);
     }
 
     deleteTask (id: number) {

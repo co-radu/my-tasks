@@ -1,58 +1,40 @@
 <div class="container">
+
 	<mat-card class="task-list1">
-		<!-- <mat-form-field > -->
 
-			<!-- Task name -->
-				<!-- <label for="label">Libellé de la tâche</label>
-				<input type="text" id="label" required pattern="^[a-zA-Z0-9àéèç]{1,999}$"
-				 name="label"> -->
-				
-			<!-- Task Description -->
-				<!-- <label for="description">Description</label>
-				<input type="text" id="Description" name="description"> -->
+		<!-- New Task Form -->
+		<form class="new-task-form" [formGroup]="form" (ngSubmit)=addTask()>
+			<mat-form-field>
+				<mat-label>Libellé</mat-label>
+				<input matInput placeholder="Ex: Sortir le chien" formControlName="label">
+			</mat-form-field>
 
-			<!-- Submit button -->
+			<mat-form-field>
+				<mat-label>Description</mat-label>
+				<textarea matInput formControlName="description"></textarea>
+			</mat-form-field>
 
-			<!-- <button mat-icon-button color="primary" type="submit">
-				<mat-icon>+</mat-icon>
-			</button> -->
-		<!-- </mat-form-field>  -->
+			<button mat-mini-fab type="submit" [disabled]="form.invalid">
+				+
+			</button>
+		</form>
+
 
 		<!-- Task List -->
-		<mat-list>
+		<mat-list *ngIf="tasks">
 			<div mat-subheader>Tâches</div>
-			<mat-selection-list *ngFor="let task of tasks">
-				<mat-list-option #task>
-					<div mat-line>{{task.label}}</div>
+			<mat-selection-list>
+				<mat-list-option *ngFor="let task of tasks">
+					{{ task.label }}
 				</mat-list-option>
 			</mat-selection-list>
+			<!--
+			<p>
+				Tâches sélectionnée(s): {{tasks.selectedOptions.selected.length}}
+			</p>
+
+			 <button mat-mini-fab (click)="editTask()"> Modifier </button> 
+			<button mat-mini-fab> Supprimer </button> -->
 		</mat-list>
 	</mat-card>
 </div>
-
-
-<!-- <div cdkDropList class="task-list2" (cdkDropListDropped)="drop($event)">
-			<div class="task-box" *ngFor="let task of tasks" cdkDrag>{{task.label}}</div>
-		</div> -->
-
-<!-- <div class="add-task-form">
-			 <mat-form-field appearance="fill">
-				<mat-label>Libellé</mat-label>
-				 <input matInput id="0" name="label" class="form-control"
-				required minlength="1" [(Task)]="task.label" #label="Task" >
-			</mat-form-field>  
-				<br>
-				<mat-form-field appearance="fill">
-					<mat-label>Select</mat-label>
-					<mat-select>
-						<mat-option value="option">Option</mat-option>
-					</mat-select>
-				</mat-form-field>
-				<mat-form-field appearance="fill">
-					<mat-label>Description</mat-label>
-					<textarea matInput></textarea>
-				</mat-form-field>
-				<button mat-mini-fab (click)="addTask(task)">
-					+
-				</button> 
-		</div> -->

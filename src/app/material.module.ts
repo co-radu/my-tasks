@@ -5,7 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { MatOptionModule } from '@angular/material/core';
+import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
     declarations: [],
@@ -17,6 +18,8 @@ import { MatOptionModule } from '@angular/material/core';
         MatIconModule,
         MatListModule,
         MatOptionModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
     ]
 })
 

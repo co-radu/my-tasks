@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { TaskService } from '../task.service';
 import { Task } from 'src/app/shared/models/task.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'task-list',
@@ -13,13 +14,22 @@ import { Task } from 'src/app/shared/models/task.model';
 export class TaskListComponent implements OnInit {
 
     public tasks: Task[] = [];
+    public form: FormGroup;
 
     constructor(private router: Router, private taskService: TaskService) { }
 
     ngOnInit(): void {
+        this.form = new FormGroup({
+            label: new FormControl('', Validators.required),
+            description: new FormControl(''),
+            position: new FormControl(0),
+            createdDate: new FormControl(new Date),
+            isActive: new FormControl(true),
+        });
+
         this.taskService.getTasks().subscribe(
             (tasks: Task[]) => {
-                this.tasks = tasks;
+                    this.tasks = tasks;
                 /*this.deleteTask(this.tasks[0]);*/
             }
         );
@@ -35,21 +45,24 @@ export class TaskListComponent implements OnInit {
         );
     }
 
-    addTask(task: Task) {
+    addTask(): void {
+        if (this.form.invalid)
+            return;
+        const task: Task = {
+            label: this.form.get('label').value,
+            description: this.form.get('description').value,
+            position: this.form.get('position').value,
+            createdDate: this.form.get('createdDate').value,
+            isActive: this.form.get('isActive').value,
+        }; 
         this.taskService.addTask(task).subscribe(
-            (task: Task) => {
-                this.addTask(task);
-            }, error =>{
-                console.log('ERREUR' + error)
+            (newTask: Task) => {
+                this.tasks.push(newTask);
             }
         );
+        error => {
+            console.log('ERREUR' + error);
+        };
     }
+
 }
-
-
-
-//     drop(event: CdkDragDrop<string[]>) {
-//         moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
-//     }
-
-
