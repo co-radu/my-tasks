@@ -11,12 +11,4 @@ export class AppComponent {
   title = 'My Tasks';
 
   constructor(private router: Router) { }
-
-  redirectTo(destination: string): void {
-    switch (destination) {
-      case 'Git-Hub':
-        window.open('https://github.com/co-radu', '_blank');
-        break;
-    }
-  }
 }

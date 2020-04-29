@@ -1,56 +1,36 @@
 @import '../../app.component.css';
 
-.task-list1{
+/* Card */
+.card {
     width: 50vw;
+    min-height: 25vh;
     margin: auto;
     margin-top: 10vh;
 }
-/* 
-.task-list2 {
-    width: 500px;
-    max-width: 100%;
-    border: solid 1px #ccc;
-    min-height: 60px;
-    display: block;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
+
+/* Add-button */
+.add-button {
+
 }
-  
-.task-box {
-    padding: 20px 10px;
-    border-bottom: solid 1px #ccc;
-    color: rgba(0, 0, 0, 0.87);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    cursor: move;
-    background: white;
-    font-size: 14px;
+
+/* Bottom-buttons */
+.bottom-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-  
-  .cdk-drag-preview {
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-                0 8px 10px 1px rgba(0, 0, 0, 0.14),
-                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+/* Edit button */
+.edit-button {
+  position: relative;
+  margin-left: 490px;
+  margin-right: 10px;
 }
-  
-  .cdk-drag-placeholder {
-    opacity: 0;
- }
-  
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
- }
-  
-  .task-box:last-child {
-    border: none;
- }
-  
-  .task-list2.cdk-drop-list-dragging .task-box:not(.cdk-drag-placeholder) {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
- } */
+
+/* Delete button */
+.delete-button {
+  position: relative;
+  margin-left: 10px;
+  margin-right: 10px;
+}

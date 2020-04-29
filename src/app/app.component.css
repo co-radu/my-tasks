@@ -1,7 +1,63 @@
-.container {
+.body {
     margin: auto;
     width: 100vw;
     height: 100vh;
     background-color: lightgrey;
     position: fixed;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Buttons */
+.button-text{
+    margin: 2px 5px;
+    color: black;
+    font-size: small;
+    align-self: center;
+}
+
+/* GitHub button */
+.github-button{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 80px;
+    height: 25px;
+    border-radius: 4%;
+    margin: auto;
+    margin-right: 10px;
+    margin-left: 1060px;
+    box-shadow: black 2px 2px 5px;
+    text-decoration: none;
+}
+
+.github-icon{
+    width: 20px;
+    height: 20px;
+    margin: 2px 5px;
+}
+
+/* LinkedIn button */
+.linkedin-button{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 100px;
+    height: 25px;
+    border-radius: 4%;
+    margin: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: black 2px 2px 5px;
+    text-decoration: none;
+}
+
+.linkedin-icon{
+    width: 22px;
+    height: 20px;
+    margin: 2px 5px;
 }

@@ -1,6 +1,5 @@
-<div class="container">
-
-	<mat-card class="task-list1">
+<div class="body">
+	<mat-card class="card">
 
 		<!-- New Task Form -->
 		<form class="new-task-form" [formGroup]="form" (ngSubmit)=addTask()>
@@ -8,17 +7,14 @@
 				<mat-label>Libellé</mat-label>
 				<input matInput placeholder="Ex: Sortir le chien" formControlName="label">
 			</mat-form-field>
-
 			<mat-form-field>
 				<mat-label>Description</mat-label>
 				<textarea matInput formControlName="description"></textarea>
 			</mat-form-field>
-
-			<button mat-mini-fab type="submit" [disabled]="form.invalid">
+			<button mat-raised-button type="submit" [disabled]="form.invalid" color="primary" class="submit-button">
 				+
 			</button>
 		</form>
-
 
 		<!-- Task List -->
 		<mat-list *ngIf="tasks">
@@ -28,13 +24,10 @@
 					{{ task.label }}
 				</mat-list-option>
 			</mat-selection-list>
-			<!--
-			<p>
-				Tâches sélectionnée(s): {{tasks.selectedOptions.selected.length}}
-			</p>
-
-			 <button mat-mini-fab (click)="editTask()"> Modifier </button> 
-			<button mat-mini-fab> Supprimer </button> -->
+			<div class="bottom-buttons">
+				<button mat-raised-button color="primary" class="edit-button"> Modifier </button>
+				<button mat-raised-button color="warn" class="delete-button"> Supprimer </button>
+			</div>
 		</mat-list>
 	</mat-card>
 </div>

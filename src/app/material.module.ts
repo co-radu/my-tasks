@@ -7,6 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [],
@@ -20,6 +21,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
         MatOptionModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        MatButtonModule,  
     ]
 })
 
