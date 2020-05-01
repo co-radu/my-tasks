@@ -8,7 +8,9 @@
 
 		<!-- Task List -->
 		<div cdkDropList class="task-list" (cdkDropListDropped)="drop($event)">
-			<div class="task-box" *ngFor="let task of tasks" cdkDrag>{{ task.label }}</div>
+			<div class="task-box" *ngFor="let task of tasks" cdkDrag>
+				{{ task.label }}
+			</div>
 		</div>
 	</mat-card>
 </div>
