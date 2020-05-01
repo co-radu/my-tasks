@@ -10,7 +10,13 @@
 		<div cdkDropList class="task-list" (cdkDropListDropped)="drop($event)">
 			<div class="task-box" *ngFor="let task of tasks" cdkDrag>
 				{{ task.label }}
+				<button mat-icon-button class="delete-button" (click)="deleteTask(task)">
+					<mat-icon>
+						delete
+					</mat-icon>
+				</button>
 			</div>
 		</div>
 	</mat-card>
 </div>
+  

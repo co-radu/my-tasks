@@ -2,22 +2,27 @@
 
 /* Card */
 .card {
-    width: 50vw;
-    min-height: 25vh;
+    width: 60vw;
+    min-height: 30vh;
+    max-height: 70vh;
     margin: auto;
     margin-top: 10vh;
+    margin-bottom: 10vh;
 }
 
 /* Task-list */
 .task-list {
-  width: 500px;
-  max-width: 100%;
+  width: 50vw;
   border: solid 1px #ccc;
-  min-height: 60px;
-  display: block;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
   background: white;
   border-radius: 4px;
-  overflow: hidden;
+  overflow-y: scroll;
+  scroll-behavior: auto;
+  margin: auto;
+  margin-bottom: 40vh;
 }
 
 .task-box {
@@ -56,4 +61,13 @@
 
 .task-list.cdk-drop-list-dragging .task-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Delete Button */
+.delete-button{
+  display: flex;
+  width: 20px;
+  height: 20px;
+  margin-right: 3vw;
+  align-items: center;
 }
