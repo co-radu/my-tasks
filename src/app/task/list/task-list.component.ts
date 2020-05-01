@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { TaskService } from '../task.service';
 import { Task } from 'src/app/shared/models/task.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @Component({
     selector: 'task-list',
@@ -16,7 +17,11 @@ export class TaskListComponent implements OnInit {
     public tasks: Task[] = [];
     public form: FormGroup;
 
-    constructor(private router: Router, private taskService: TaskService) { }
+    constructor(
+        private router: Router,
+        private taskService: TaskService,
+        private dialog: MatDialog,
+    ) { }
 
     ngOnInit(): void {
         this.form = new FormGroup({
@@ -29,8 +34,22 @@ export class TaskListComponent implements OnInit {
 
         this.taskService.getTasks().subscribe(
             (tasks: Task[]) => {
-                    this.tasks = tasks;
+                this.tasks = tasks;
                 /*this.deleteTask(this.tasks[0]);*/
+            }
+        );
+    }
+
+    openDialog(): void {
+        const dialogRef = this.dialog.open(AddTaskComponent, {
+            width: '300px',
+            data: {},
+        });
+        dialogRef.afterClosed().subscribe(
+            (newTask: Task) => {
+                if(newTask) {
+                    this.tasks.push(newTask);
+                }
             }
         );
     }
@@ -54,11 +73,8 @@ export class TaskListComponent implements OnInit {
             position: this.form.get('position').value,
             createdDate: this.form.get('createdDate').value,
             isActive: this.form.get('isActive').value,
-        }; 
+        };
         this.taskService.addTask(task).subscribe(
-            (newTask: Task) => {
-                this.tasks.push(newTask);
-            }
         );
         error => {
             console.log('ERREUR' + error);

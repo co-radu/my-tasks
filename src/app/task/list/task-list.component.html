@@ -1,7 +1,7 @@
 <div class="body">
 	<mat-card class="card">
 
-		<!-- New Task Form -->
+		<!-- New Task Form
 		<form class="new-task-form" [formGroup]="form" (ngSubmit)=addTask()>
 			<mat-form-field>
 				<mat-label>Libellé</mat-label>
@@ -14,7 +14,13 @@
 			<button mat-raised-button type="submit" [disabled]="form.invalid" color="primary" class="submit-button">
 				+
 			</button>
-		</form>
+		</form> -->
+
+		<button mat-fab color="primary" class="add-task-button" (click)="openDialog()">
+			<mat-icon>
+				add
+			</mat-icon>
+		</button>
 
 		<!-- Task List -->
 		<mat-list *ngIf="tasks">

@@ -12,6 +12,7 @@ export class AddTaskComponent {
     constructor(
         private taskService: TaskService,
         public dialogRef: MatDialogRef<AddTaskComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any,
     ) {}
 
 }
