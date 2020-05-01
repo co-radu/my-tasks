@@ -5,6 +5,7 @@ import { Task } from 'src/app/shared/models/task.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
     selector: 'task-list',
@@ -47,7 +48,7 @@ export class TaskListComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(
             (newTask: Task) => {
-                if(newTask) {
+                if (newTask) {
                     this.tasks.push(newTask);
                 }
             }
@@ -81,4 +82,7 @@ export class TaskListComponent implements OnInit {
         };
     }
 
+    drop(event: CdkDragDrop<string[]>) {
+        moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+    }
 }

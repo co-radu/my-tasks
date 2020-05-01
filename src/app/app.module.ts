@@ -10,6 +10,7 @@ import { TaskListComponent } from './task/list/task-list.component';
 import { DetailTaskComponent } from './task/detail/detail-task.component';
 import { AddTaskComponent } from './task/list/add-task/add-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     BrowserModule,
     ReactiveFormsModule,
+    DragDropModule,
   ],
   bootstrap: [AppComponent],
   providers: [TaskService],
