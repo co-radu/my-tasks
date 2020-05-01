@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskService } from './task/task.service';
 import { TaskListComponent } from './task/list/task-list.component';
-import { DetailTaskComponent } from './task/detail/detail-task.component';
 import { AddTaskComponent } from './task/list/add-task/add-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -16,7 +15,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   declarations: [
     AppComponent,
     TaskListComponent,
-    DetailTaskComponent,
     AddTaskComponent,
   ],
   imports: [

@@ -40,14 +40,12 @@ export class AddTaskComponent implements OnInit {
             isActive: this.form.get('isActive').value,
         };
         this.taskService.addTask(task).subscribe(
+            (newTask: Task) => {
+                this.dialogRef.close(newTask)
+            }
         );
-        this.onNoClick();
         error => {
             console.log('ERREUR' + error);
         };
     }
-
-    onNoClick(): void {
-        this.dialogRef.close();
-      }
 }

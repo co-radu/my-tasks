@@ -7,22 +7,21 @@
     max-height: 70vh;
     margin: auto;
     margin-top: 10vh;
-    margin-bottom: 10vh;
+    padding-bottom: 30px;
 }
 
 /* Task-list */
 .task-list {
   width: 50vw;
-  border: solid 1px #ccc;
   min-height: 30vh;
-  display: flex;
+  max-height: 60vh;
+  border: solid 1px #ccc;
+  display: block;
   flex-direction: column;
   background: white;
   border-radius: 4px;
-  overflow-y: scroll;
-  scroll-behavior: auto;
+  overflow-y: auto;
   margin: auto;
-  margin-bottom: 40vh;
 }
 
 .task-box {
