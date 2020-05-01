@@ -1,22 +1,6 @@
 <div class="body">
 	<mat-card class="card">
-
-		<!-- New Task Form
-		<form class="new-task-form" [formGroup]="form" (ngSubmit)=addTask()>
-			<mat-form-field>
-				<mat-label>Libellé</mat-label>
-				<input matInput placeholder="Ex: Sortir le chien" formControlName="label">
-			</mat-form-field>
-			<mat-form-field>
-				<mat-label>Description</mat-label>
-				<textarea matInput formControlName="description"></textarea>
-			</mat-form-field>
-			<button mat-raised-button type="submit" [disabled]="form.invalid" color="primary" class="submit-button">
-				+
-			</button>
-		</form> -->
-
-		<button mat-fab color="primary" class="add-task-button" (click)="openDialog()">
+		<button mat-mini-fab color="primary" class="add-task-button" (click)="openDialog()">
 			<mat-icon>
 				add
 			</mat-icon>
