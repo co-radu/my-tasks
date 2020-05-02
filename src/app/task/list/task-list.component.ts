@@ -6,6 +6,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 
+export interface DialogData {
+    task?: Task;
+}
+
 @Component({
     selector: 'task-list',
     templateUrl: 'task-list.component.html',
@@ -30,15 +34,21 @@ export class TaskListComponent implements OnInit {
         );
     }
 
-    openDialog(): void {
+    openDialog(task? : Task): void {
         const dialogRef = this.dialog.open(AddTaskComponent, {
             width: '300px',
-            data: {},
+            data: {
+                task: task ? task : ''
+            },
         });
         dialogRef.afterClosed().subscribe(
-            (newTask: Task) => {
-                if (newTask) {
-                    this.tasks.push(newTask);
+            (returnTask: Task) => {
+                if (returnTask && task) {
+                    this.tasks = [...this.tasks.filter(
+                        (filterTask: Task) => filterTask.id !== returnTask.id
+                    ), returnTask];
+                } else if(returnTask && !task) {
+                    this.tasks.push(returnTask);
                 }
             }
         );

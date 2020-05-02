@@ -29,7 +29,7 @@ export class TaskService {
         return this.http.delete(this.url + '/api/items/' + id + '.json');
     }
 
-    updateTask (task: Task): Observable<Task> {
+    editTask (task: Task): Observable<Task> {
         return this.http.put<Task>(this.url + '/api/items/' + task.id + '.json', task);
     }
 }

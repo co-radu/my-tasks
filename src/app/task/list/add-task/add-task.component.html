@@ -1,5 +1,4 @@
-<!-- New Task Form -->
-<form class="new-task-form" [formGroup]="form" (ngSubmit)=addTask()>
+<form class="new-task-form" [formGroup]="form" (ngSubmit)="submitTask()">
     <mat-form-field>
         <mat-label>Libellé</mat-label>
         <input matInput placeholder="Ex: Sortir le chien" formControlName="label">
@@ -9,6 +8,6 @@
         <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" class="submit-button">
-        Créer
+        {{ data.task ? 'Modifier' : 'Créer'}}
     </button>
 </form>
