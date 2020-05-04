@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
     declarations: [],
@@ -21,7 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
         MatOptionModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatButtonModule,  
+        MatButtonModule,
+        MatAutocompleteModule,
     ]
 })
 

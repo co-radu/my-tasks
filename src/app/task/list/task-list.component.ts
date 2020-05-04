@@ -5,6 +5,7 @@ import { Task } from 'src/app/shared/models/task.model';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { DeleteTaskComponent } from './delete/delete-task.component';
 
 export interface DialogData {
     task?: Task;
@@ -27,6 +28,16 @@ export class TaskListComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.taskService.getCurrentSearchString().subscribe(
+            (value: string) => {
+                if (this.tasks) {
+                    const filterValue: string = value.toLowerCase();
+                    this.tasks.filter((task: Task) => {
+                        return task.label.toLowerCase().includes(filterValue) || task.description.toLowerCase().includes(filterValue) ? task : null;
+                    });
+                }
+            }
+        );
         this.taskService.getTasks().subscribe(
             (tasks: Task[]) => {
                 this.tasks = tasks;
@@ -34,7 +45,7 @@ export class TaskListComponent implements OnInit {
         );
     }
 
-    openDialog(task? : Task): void {
+    openDialog(task?: Task): void {
         const dialogRef = this.dialog.open(AddTaskComponent, {
             width: '300px',
             data: {
@@ -47,19 +58,29 @@ export class TaskListComponent implements OnInit {
                     this.tasks = [...this.tasks.filter(
                         (filterTask: Task) => filterTask.id !== returnTask.id
                     ), returnTask];
-                } else if(returnTask && !task) {
+                } else if (returnTask && !task) {
                     this.tasks.push(returnTask);
                 }
             }
         );
     }
 
-    deleteTask(task: Task): void {
-        this.taskService.deleteTask(task.id).subscribe(
-            () => {
-                this.tasks.splice(0, 1);
-            }, error => {
-                console.log('ERREUR' + error);
+    openDeleteDialog(task: Task): void {
+        const deleteDialogRef = this.dialog.open(DeleteTaskComponent, {
+            width: '400px',
+            data: {
+                task: task ? task : ''
+            },
+        });
+        deleteDialogRef.afterClosed().subscribe(
+            (taskIdDeleted: number) => {
+                if (taskIdDeleted) {
+                    this.tasks = [...this.tasks.filter(
+                        (filterTask: Task) => filterTask.id !== taskIdDeleted
+                    )];
+                } else {
+                    null;
+                }
             }
         );
     }

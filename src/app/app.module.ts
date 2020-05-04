@@ -10,12 +10,14 @@ import { TaskListComponent } from './task/list/task-list.component';
 import { AddTaskComponent } from './task/list/add-task/add-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { DeleteTaskComponent } from './task/list/delete/delete-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskListComponent,
     AddTaskComponent,
+    DeleteTaskComponent
   ],
   imports: [
     BrowserAnimationsModule, 
