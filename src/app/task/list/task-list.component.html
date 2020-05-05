@@ -8,7 +8,7 @@
 
 		<!-- Task List -->
 		<div cdkDropList class="task-list" (cdkDropListDropped)="drop($event)">
-			<div class="task-box" *ngFor="let task of tasks" cdkDrag>
+			<div class="task-box" *ngFor="let task of filteredTasks" cdkDrag>
 				{{ task.label }}
 				<button mat-icon-button class="edit-button" (click)="openDialog(task)">
 					<mat-icon>
@@ -24,4 +24,3 @@
 		</div>
 	</mat-card>
 </div>
-  

@@ -19,7 +19,9 @@ export interface DialogData {
 
 export class TaskListComponent implements OnInit {
 
-    public tasks: Task[] = [];
+    private allTasks: Task[] = [];
+    public filteredTasks: Task[] = [];
+    private currentSearchString: string;
 
     constructor(
         private router: Router,
@@ -30,17 +32,15 @@ export class TaskListComponent implements OnInit {
     ngOnInit(): void {
         this.taskService.getCurrentSearchString().subscribe(
             (value: string) => {
-                if (this.tasks) {
-                    const filterValue: string = value.toLowerCase();
-                    this.tasks.filter((task: Task) => {
-                        return task.label.toLowerCase().includes(filterValue) || task.description.toLowerCase().includes(filterValue) ? task : null;
-                    });
-                }
+                this.currentSearchString = value;
+                this.filterTasks();
             }
         );
         this.taskService.getTasks().subscribe(
             (tasks: Task[]) => {
-                this.tasks = tasks;
+                this.allTasks = tasks;
+                this.filteredTasks = tasks;
+                this.filterTasks();
             }
         );
     }
@@ -55,11 +55,13 @@ export class TaskListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(
             (returnTask: Task) => {
                 if (returnTask && task) {
-                    this.tasks = [...this.tasks.filter(
+                    this.allTasks = [...this.allTasks.filter(
                         (filterTask: Task) => filterTask.id !== returnTask.id
                     ), returnTask];
+                    this.filterTasks();
                 } else if (returnTask && !task) {
-                    this.tasks.push(returnTask);
+                    this.allTasks.push(returnTask);
+                    this.filterTasks();
                 }
             }
         );
@@ -75,9 +77,10 @@ export class TaskListComponent implements OnInit {
         deleteDialogRef.afterClosed().subscribe(
             (taskIdDeleted: number) => {
                 if (taskIdDeleted) {
-                    this.tasks = [...this.tasks.filter(
+                    this.allTasks = [...this.allTasks.filter(
                         (filterTask: Task) => filterTask.id !== taskIdDeleted
                     )];
+                    this.filterTasks();
                 } else {
                     null;
                 }
@@ -86,6 +89,19 @@ export class TaskListComponent implements OnInit {
     }
 
     drop(event: CdkDragDrop<string[]>) {
-        moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+        moveItemInArray(this.allTasks, event.previousIndex, event.currentIndex);
+        this.filterTasks();
+    }
+
+    filterTasks(): void {
+        if (this.currentSearchString && this.currentSearchString.length > 0) {
+            this.filteredTasks = this.allTasks.filter(
+                (task: Task) => {
+                    return task.label.toLowerCase().includes(this.currentSearchString.toLowerCase()) || task.description.toLowerCase().includes(this.currentSearchString.toLowerCase()) ? task : null;
+                }
+            );
+        } else {
+            this.filteredTasks = this.allTasks;
+        }
     }
 }
