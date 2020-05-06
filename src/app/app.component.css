@@ -9,7 +9,7 @@
 /* Toolbar */
 .toolbar {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
 }
 
 /* Buttons */
@@ -22,15 +22,10 @@
 
 /* GitHub button */
 .github-button{
-    display: flex;
-    flex-direction: row;
     background-color: white;
     width: 80px;
     height: 25px;
     border-radius: 4%;
-    margin: auto;
-    margin-right: 10px;
-    margin-left: 1060px;
     box-shadow: black 2px 2px 5px;
     text-decoration: none;
 }
@@ -49,9 +44,6 @@
     width: 100px;
     height: 25px;
     border-radius: 4%;
-    margin: auto;
-    margin-left: 10px;
-    margin-right: 10px;
     box-shadow: black 2px 2px 5px;
     text-decoration: none;
 }

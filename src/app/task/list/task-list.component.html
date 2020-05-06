@@ -7,20 +7,22 @@
 		</button>
 
 		<!-- Task List -->
-		<div cdkDropList class="task-list" (cdkDropListDropped)="drop($event)">
-			<div class="task-box" *ngFor="let task of filteredTasks" cdkDrag>
-				{{ task.label }}
-				<button mat-icon-button class="edit-button" (click)="openDialog(task)">
-					<mat-icon>
-						create
-					</mat-icon>
-				</button>
-				<button mat-icon-button class="delete-button" (click)="openDeleteDialog(task)">
-					<mat-icon>
-						delete
-					</mat-icon>
-				</button>
+			<div cdkDropList class="task-list" (cdkDropListDropped)="drop($event)"
+			infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollUpDistance]="1.5" [infiniteScrollThrottle]="50"
+			(scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()" [scrollWindow]="false">
+				<div class="task-box" *ngFor="let task of filteredTasks" cdkDrag>
+					{{ task.label }}
+					<button mat-icon-button class="edit-button" (click)="openDialog(task)">
+						<mat-icon>
+							create
+						</mat-icon>
+					</button>
+					<button mat-icon-button class="delete-button" (click)="openDeleteDialog(task)">
+						<mat-icon>
+							delete
+						</mat-icon>
+					</button>
+				</div>
 			</div>
-		</div>
 	</mat-card>
 </div>

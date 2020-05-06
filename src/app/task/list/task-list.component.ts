@@ -38,8 +38,8 @@ export class TaskListComponent implements OnInit {
         );
         this.taskService.getTasks().subscribe(
             (tasks: Task[]) => {
-                this.allTasks = tasks;
-                this.filteredTasks = tasks;
+                this.allTasks = tasks['hydra:member'];
+                this.filteredTasks = tasks['hydra:member'];
                 this.filterTasks();
             }
         );
@@ -103,5 +103,13 @@ export class TaskListComponent implements OnInit {
         } else {
             this.filteredTasks = this.allTasks;
         }
+    }
+
+    onScrollDown(): void {
+        console.log('scrolled down !!');
+    }
+
+    onScrollUp(): void {
+        console.log('scrolled up !!');
     }
 }

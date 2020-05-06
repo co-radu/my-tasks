@@ -11,6 +11,7 @@ import { AddTaskComponent } from './task/list/add-task/add-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DeleteTaskComponent } from './task/list/delete/delete-task.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DeleteTaskComponent } from './task/list/delete/delete-task.component';
     BrowserModule,
     ReactiveFormsModule,
     DragDropModule,
+    InfiniteScrollModule,
   ],
   bootstrap: [AppComponent],
   providers: [TaskService],
