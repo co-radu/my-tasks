@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { TaskService } from '../task.service';
 import { Task } from 'src/app/shared/models/task.model';
@@ -22,6 +22,7 @@ export class TaskListComponent implements OnInit {
     private allTasks: Task[] = [];
     public filteredTasks: Task[] = [];
     private currentSearchString: string;
+    private taskNumber: number;
 
     constructor(
         private router: Router,
@@ -40,6 +41,7 @@ export class TaskListComponent implements OnInit {
             (tasks: Task[]) => {
                 this.allTasks = tasks['hydra:member'];
                 this.filteredTasks = tasks['hydra:member'];
+                this.taskNumber = tasks['hydra:totalItems'];
                 this.filterTasks();
             }
         );
@@ -105,11 +107,18 @@ export class TaskListComponent implements OnInit {
         }
     }
 
-    onScrollDown(): void {
-        console.log('scrolled down !!');
-    }
-
-    onScrollUp(): void {
-        console.log('scrolled up !!');
+    onScroll(): void {
+        if (this.taskNumber > 10) {
+            this.taskService.counterPage();
+            this.taskService.getTasks().subscribe(
+                (tasks: Task[]) => {
+                    this.allTasks.push(tasks['hydra:member']);
+                    this.filteredTasks.push(tasks['hydra:member']);
+                    this.filterTasks();
+                }
+            );
+        } else {
+            null;
+        }
     }
 }
