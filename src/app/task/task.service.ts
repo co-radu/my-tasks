@@ -11,12 +11,11 @@ export class TaskService {
 
     private url: string = environment.url;
     public currentSearchStringSubject = new BehaviorSubject<string>('');
-    public pageNumber: number = 1;
 
     constructor(private http: HttpClient) { }
 
-    getTasks(page?): Observable<Task[]> {
-        return this.http.get<Task[]>(this.url + '/api/items/?page=' + this.pageNumber);
+    getTasks(pageNumber: number): Observable<Task[]> {
+        return this.http.get<Task[]>(this.url + '/api/items/?page=' + pageNumber);
     }
 
     getTask(id: number): Observable<Task> {
@@ -41,10 +40,5 @@ export class TaskService {
 
     getCurrentSearchString(): Observable<string> {
         return this.currentSearchStringSubject.asObservable();
-    }
-
-    counterPage(): void {
-        this.pageNumber += 1;
-        return console.log(this.pageNumber);
     }
 }

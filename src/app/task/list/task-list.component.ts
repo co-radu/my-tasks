@@ -23,7 +23,9 @@ export class TaskListComponent implements OnInit {
     public filteredTasks: Task[] = [];
     private currentSearchString: string;
     private totalTaskNumber: number;
-    private taskInPage: boolean;
+    private taskNumber: number = 10;
+    public pageNumber: number = 1;
+
 
     constructor(
         private router: Router,
@@ -38,8 +40,8 @@ export class TaskListComponent implements OnInit {
                 this.filterTasks();
             }
         );
-        this.taskService.getTasks().subscribe(
-            (tasks: Task[]) => {
+        this.taskService.getTasks(this.pageNumber).subscribe(
+            (tasks: any) => {
                 this.allTasks = tasks['hydra:member'];
                 this.filteredTasks = tasks['hydra:member'];
                 this.totalTaskNumber = tasks['hydra:totalItems'];
@@ -109,14 +111,17 @@ export class TaskListComponent implements OnInit {
     }
 
     onScroll(): void {
-        if (this.totalTaskNumber > (this.taskService.pageNumber * 10) && this.totalTaskNumber < (this.taskService.pageNumber + 1) * 10) {
-            this.taskService.counterPage();
-            this.taskService.getTasks().subscribe(
-                (tasks: Task[]) => {
-                    console.log(tasks);
-                    this.allTasks.push(tasks['hydra:member']);
-                    this.filteredTasks.push(tasks['hydra:member']);
-                    this.filterTasks();
+        if (this.totalTaskNumber > 10 && this.taskNumber < this.totalTaskNumber) {
+            this.pageNumber++;
+            this.taskService.getTasks(this.pageNumber).subscribe(
+                (tasks: any) => {
+                    tasks['hydra:member'].forEach(
+                        (task: Task) => {
+                            this.taskNumber++;
+                            this.filteredTasks.push(task);
+                            this.filterTasks();
+                        }
+                    );
                 }
             );
         } else {
