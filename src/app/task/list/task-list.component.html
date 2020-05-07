@@ -12,6 +12,11 @@
 			(scrolled)="onScroll()" [scrollWindow]="false">
 			<div class="task-box" *ngFor="let task of filteredTasks" cdkDrag>
 				{{ task.label }}
+				<div class="drag-handle" cdkDragHandle>
+					<mat-icon>
+						drag_indicator
+					</mat-icon>
+				</div>
 				<button mat-icon-button class="edit-button" (click)="openDialog(task)">
 					<mat-icon>
 						create
