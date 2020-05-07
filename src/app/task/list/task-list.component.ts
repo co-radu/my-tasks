@@ -22,7 +22,8 @@ export class TaskListComponent implements OnInit {
     private allTasks: Task[] = [];
     public filteredTasks: Task[] = [];
     private currentSearchString: string;
-    private taskNumber: number;
+    private totalTaskNumber: number;
+    private taskInPage: boolean;
 
     constructor(
         private router: Router,
@@ -41,7 +42,7 @@ export class TaskListComponent implements OnInit {
             (tasks: Task[]) => {
                 this.allTasks = tasks['hydra:member'];
                 this.filteredTasks = tasks['hydra:member'];
-                this.taskNumber = tasks['hydra:totalItems'];
+                this.totalTaskNumber = tasks['hydra:totalItems'];
                 this.filterTasks();
             }
         );
@@ -108,10 +109,11 @@ export class TaskListComponent implements OnInit {
     }
 
     onScroll(): void {
-        if (this.taskNumber > 10) {
+        if (this.totalTaskNumber > (this.taskService.pageNumber * 10) && this.totalTaskNumber < (this.taskService.pageNumber + 1) * 10) {
             this.taskService.counterPage();
             this.taskService.getTasks().subscribe(
                 (tasks: Task[]) => {
+                    console.log(tasks);
                     this.allTasks.push(tasks['hydra:member']);
                     this.filteredTasks.push(tasks['hydra:member']);
                     this.filterTasks();

@@ -11,7 +11,7 @@ export class TaskService {
 
     private url: string = environment.url;
     public currentSearchStringSubject = new BehaviorSubject<string>('');
-    private pageNumber: number = 1;
+    public pageNumber: number = 1;
 
     constructor(private http: HttpClient) { }
 
