@@ -2,17 +2,16 @@
   <div class="title">
     <span>My Tasks</span>
   </div>
-  <div class="search and buttons">
+  <div class="buttons_pannel">
     <input type="text" placeholder="Rechercher" matInput [formControl]="searchInput">
-    <a mat-raised-button href="https://github.com/co-radu" target="_blank" class="github-button">
-      <img src="../assets/icons/github-icon.png" class="github-icon">
-      <p class="button-text">GitHub</p>
-    </a>
-    <a mat-raised-button href="https://linkedin.com/in/corentin-radureau-93289a139" target="_blank"
-      class="linkedin-button">
-      <img src="../assets/icons/linkedin-icon.png" class="linkedin-icon">
-      <p class="button-text">LinkedIn</p>
-    </a>
+    <button mat-raised-button class="github_button" (click)="redirectTo('GitHub')">
+      <img src="../assets/icons/github-icon.png" class="github_icon">
+      GitHub
+    </button>
+    <button mat-raised-button class="linkedin_button" (click)="redirectTo('LinkedIn')">
+      <img src="../assets/icons/linkedin-icon.webp" class="linkedin_icon">
+      LinkedIn
+    </button>
   </div>
 </mat-toolbar>
 <router-outlet></router-outlet>

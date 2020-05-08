@@ -1,9 +1,13 @@
-<p>
-    Voulez-vous vraiment supprimez cette tâche ?
-</p>
-<button mat-raised-button color="primary" class="cancel-delete-button" (click)="onCancel()">
-    Annuler
-</button>
-<button mat-raised-button color="warn" class="confirm-delete-button" (click)="deleteTask(data.task)">
-    Supprimer
-</button>
+<div class="delete_dialog">
+    <p>
+        Voulez-vous vraiment supprimez cette tâche ?
+    </p>
+    <div class="delete_buttons">
+        <button mat-raised-button color="primary" class="cancel-delete-button" (click)="onCancel()">
+            Annuler
+        </button>
+        <button mat-raised-button color="warn" class="confirm-delete-button" (click)="deleteTask(data.task)">
+            Supprimer
+        </button>
+    </div>
+</div>

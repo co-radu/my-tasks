@@ -1,0 +1,7 @@
+@import '../../../app.component.css';
+
+.buttons {
+    width: 330px;
+    display: flex;
+    justify-content: space-around;
+}

@@ -7,7 +7,8 @@ import { DialogData } from '../task-list.component';
 
 @Component({
     selector: 'add-task',
-    templateUrl: './add-task.component.html'
+    templateUrl: 'add-task.component.html',
+    styleUrls: ['add-task.component.css'],
 })
 
 export class AddTaskComponent implements OnInit {
@@ -60,5 +61,9 @@ export class AddTaskComponent implements OnInit {
                 }
             );
         }
+    }
+
+    onCancel(): void {
+        this.dialogRef.close();
     }
 }

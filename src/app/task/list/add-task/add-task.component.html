@@ -1,5 +1,5 @@
-<form class="new-task-form" [formGroup]="form" (ngSubmit)="submitTask()">
-    <mat-form-field>
+<form class="new-edit_task_form" [formGroup]="form" (ngSubmit)="submitTask()">
+    <mat-form-field class="input_form">
         <mat-label>Libellé</mat-label>
         <input matInput placeholder="Ex: Sortir le chien" formControlName="label">
     </mat-form-field>
@@ -7,7 +7,12 @@
         <mat-label>Description</mat-label>
         <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
+    <div class="buttons">
+    <button mat-raised-button color="primary" (click)="onCancel()" class="cancel-button">
+        Annuler
+    </button>
     <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" class="submit-button">
         {{ data.task ? 'Modifier' : 'Créer' }}
     </button>
+    </div>
 </form>

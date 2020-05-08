@@ -29,4 +29,15 @@ export class AppComponent implements OnInit {
       }
     )
   }
+
+  redirectTo(destination: string): void {
+    switch (destination) {
+      case 'GitHub':
+        window.open('https://github.com/co-radu', '_blank');
+        break;
+      case 'LinkedIn':
+        window.open('https://linkedin.com/in/corentin-radureau-93289a139', '_blank');
+        break;
+    }
+  }
 }

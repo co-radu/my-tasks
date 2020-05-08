@@ -52,7 +52,6 @@ export class TaskListComponent implements OnInit {
 
     openDialog(task?: Task): void {
         const dialogRef = this.dialog.open(AddTaskComponent, {
-            width: '300px',
             data: {
                 task: task ? task : ''
             },

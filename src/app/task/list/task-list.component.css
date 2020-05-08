@@ -1,27 +1,26 @@
 @import '../../app.component.css';
 
-/* Card */
 .card {
-    width: 60vw;
-    min-height: 30vh;
-    max-height: 70vh;
-    margin: auto;
-    margin-top: 10vh;
-    padding-bottom: 30px;
+  width: 55vw;
+  max-height: 65vh;
+  margin: 10vh;
+}
+
+.add_task_button {
+  position: absolute;
+  left: -20px;
+  top: -20px;
 }
 
 /* Task-list */
 .task-list {
-  width: 50vw;
-  min-height: 30vh;
-  max-height: 60vh;
+  max-height: 65vh;
+  min-height: 80px;
   border: solid 1px #ccc;
   display: block;
-  flex-direction: column;
   background: white;
   border-radius: 4px;
   overflow-y: auto;
-  margin: auto;
 }
 
 .task-box {
@@ -33,7 +32,6 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  cursor: move;
   background: white;
   font-size: 14px;
 }
@@ -62,11 +60,16 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-/* Delete Button */
-.delete-button{
+.drag-handle {
+  height: 40px;
+  width: 40px;
   display: flex;
-  width: 20px;
-  height: 20px;
-  margin-right: 3vw;
   align-items: center;
+  justify-content: center;
+  cursor: move;
 }
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;}

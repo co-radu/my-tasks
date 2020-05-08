@@ -1,55 +1,40 @@
 .body {
-    margin: auto;
     width: 100vw;
     height: 100vh;
     background-color: lightgrey;
     position: fixed;
+    display: flex;
+    justify-content: center;
 }
 
 /* Toolbar */
 .toolbar {
-    display: flex;
     justify-content: space-between;
 }
 
 /* Buttons */
-.button-text{
-    margin: 2px 5px;
-    color: black;
-    font-size: small;
-    align-self: center;
+.buttons_pannel {
+    display: flex;
+    width: 420px;
+    justify-content: space-around;
 }
 
 /* GitHub button */
-.github-button{
-    background-color: white;
-    width: 80px;
-    height: 25px;
-    border-radius: 4%;
-    box-shadow: black 2px 2px 5px;
-    text-decoration: none;
-}
+.github_button{
+    padding: revert;
+}    
 
-.github-icon{
-    width: 20px;
-    height: 20px;
-    margin: 2px 5px;
+.github_icon{
+    width: 25px;
+    height: 25px;
 }
 
 /* LinkedIn button */
-.linkedin-button{
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-    width: 100px;
-    height: 25px;
-    border-radius: 4%;
-    box-shadow: black 2px 2px 5px;
-    text-decoration: none;
+.linkedin_button{
+    padding: revert;
 }
 
-.linkedin-icon{
-    width: 22px;
-    height: 20px;
-    margin: 2px 5px;
+.linkedin_icon{
+    width: 25px;
+    height: 25px;
 }

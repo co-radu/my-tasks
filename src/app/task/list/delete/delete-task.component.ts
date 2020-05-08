@@ -8,6 +8,7 @@ import { TaskListComponent } from '../task-list.component';
 @Component({
     selector: 'delete-task',
     templateUrl: 'delete-task.component.html',
+    styleUrls: ['delete-task.component.css'],
 })
 
 export class DeleteTaskComponent {
