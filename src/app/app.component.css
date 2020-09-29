@@ -1,40 +1,57 @@
 .body {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: lightgrey;
     position: fixed;
     display: flex;
     justify-content: center;
 }
 
-/* Toolbar */
+.body__card {
+    width: 60%;
+    max-height: 65vh;
+    margin: 10vh;
+}
+
 .toolbar {
     justify-content: space-between;
 }
 
-/* Buttons */
-.buttons_pannel {
+.toolbar__container {
     display: flex;
     width: 420px;
     justify-content: space-around;
 }
 
-/* GitHub button */
-.github_button{
-    padding: revert;
-}    
-
-.github_icon{
-    width: 25px;
-    height: 25px;
+.toolbar__container__buttons {
+    display: flex;
+    align-items: center;
 }
 
-/* LinkedIn button */
-.linkedin_button{
-    padding: revert;
-}
-
-.linkedin_icon{
+.toolbar__container__buttons__icons {
     width: 25px;
     height: 25px;
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    .toolbar__container {
+        width: 80px;
+    }
+    .toolbar__container__search {
+        display: none;
+    }
+    .toolbar__container__linkedin-mat-buttons, .toolbar__container__github-mat-buttons {
+        min-width: 0px;
+        padding: 0;
+    }
+    .toolbar__container__github-mat-buttons {
+        border-radius: 50px;
+    }
+    .toolbar__container__buttons__text {
+        display: none;
+    }
+    .toolbar__container__buttons__icons {
+        margin-right: 0;
+    }
 }

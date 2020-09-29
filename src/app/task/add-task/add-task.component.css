@@ -1,0 +1,28 @@
+@import '../../app.component.css';
+.body__card {
+    width: 45%;
+    max-height: 45%;
+    margin: 20vh;
+}
+
+.body__card__task-form {
+    width: 100%;
+    height: 100%;
+}
+
+.body__card__task-form__input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+}
+
+.body__card__task-form__buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+p {
+    margin: 12px 0
+}

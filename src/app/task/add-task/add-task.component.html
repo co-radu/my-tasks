@@ -1,0 +1,24 @@
+<div class="body">
+    <mat-card class="body__card">
+        <form class="body__card__task-form" [formGroup]="form" (ngSubmit)="submitTask()">
+            <div class="body__card__task-form__input">
+                <p>
+                    Libellé
+                </p>
+                <input placeholder="Ex: Sortir le chien" formControlName="label" [value]="task?.label">
+                <p>
+                    Description
+                </p>
+                <textarea formControlName="description"></textarea>
+            </div>
+            <div class="body__card__task-form__buttons">
+                <button mat-raised-button color="primary" (click)="onCancel()">
+                    Annuler
+                </button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+                    {{ task ? 'Modifier' : 'Créer' }}
+                </button>
+            </div>
+        </form>
+    </mat-card>
+</div>

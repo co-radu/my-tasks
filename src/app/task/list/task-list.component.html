@@ -1,12 +1,10 @@
 <div class="body">
-	<mat-card class="card">
-		<button mat-mini-fab color="primary" class="add_task_button" (click)="openDialog()">
+	<mat-card class="body__card">
+		<button mat-mini-fab color="primary" class="add_task_button" (click)="newTask()">
 			<mat-icon>
 				add
 			</mat-icon>
 		</button>
-
-		<!-- Task List -->
 		<div cdkDropList class="task-list" (cdkDropListDropped)="drop($event)" infiniteScroll
 			[infiniteScrollDistance]="2" [infiniteScrollUpDistance]="1.5" [infiniteScrollThrottle]="50"
 			(scrolled)="onScroll()" [scrollWindow]="false">
@@ -18,7 +16,7 @@
 							drag_indicator
 						</mat-icon>
 					</div>
-					<button mat-icon-button class="edit-button" (click)="openDialog(task)">
+					<button mat-icon-button class="edit-button" (click)="editTask(task)">
 						<mat-icon>
 							create
 						</mat-icon>

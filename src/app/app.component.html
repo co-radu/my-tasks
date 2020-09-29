@@ -1,16 +1,24 @@
 <mat-toolbar color="primary" class="toolbar">
-  <div class="title">
+  <div class="toolbar__title">
     <span>My Tasks</span>
   </div>
-  <div class="buttons_pannel">
-    <input type="text" placeholder="Rechercher" matInput [formControl]="searchInput">
-    <button mat-raised-button class="github_button" (click)="redirectTo('GitHub')">
-      <img src="../assets/icons/github-icon.png" class="github_icon">
-      GitHub
+  <div class="toolbar__container">
+    <input class="toolbar__container__search" type="text" placeholder="Rechercher" [formControl]="searchInput">
+    <button mat-raised-button (click)="redirectTo('LinkedIn')" class="toolbar__container__github-mat-buttons">
+      <div class="toolbar__container__buttons">
+        <img src="../assets/icons/github-icon.png" class="toolbar__container__buttons__icons">
+        <div class="toolbar__container__buttons__text">
+          GitHub
+        </div>
+      </div>
     </button>
-    <button mat-raised-button class="linkedin_button" (click)="redirectTo('LinkedIn')">
-      <img src="../assets/icons/linkedin-icon.webp" class="linkedin_icon">
-      LinkedIn
+    <button mat-raised-button (click)="redirectTo('LinkedIn')" class="toolbar__container__linkedin-mat-buttons">
+      <div class="toolbar__container__buttons">
+        <img src="../assets/icons/linkedin-icon.webp" class="toolbar__container__buttons__icons">
+        <div class="toolbar__container__buttons__text">
+          LinkedIn
+        </div>
+      </div>
     </button>
   </div>
 </mat-toolbar>

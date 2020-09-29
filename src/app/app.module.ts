@@ -1,27 +1,29 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from './material.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TaskService } from './task/task.service';
-import { TaskListComponent } from './task/list/task-list.component';
-import { AddTaskComponent } from './task/list/add-task/add-task.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MaterialModule } from './material.module';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { TaskService } from './shared/services/task.service';
+import { AddTaskComponent } from './task/add-task/add-task.component';
 import { DeleteTaskComponent } from './task/list/delete/delete-task.component';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TaskListComponent } from './task/list/task-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskListComponent,
     AddTaskComponent,
-    DeleteTaskComponent
+    DeleteTaskComponent,
+    PageNotFoundComponent,
   ],
   imports: [
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
@@ -31,7 +33,15 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     DragDropModule,
     InfiniteScrollModule,
   ],
-  bootstrap: [AppComponent],
-  providers: [TaskService],
+  bootstrap: [
+    AppComponent
+  ],
+  providers: [
+    TaskService
+  ],
+  entryComponents: [
+    AddTaskComponent,
+    DeleteTaskComponent,
+  ],
 })
 export class AppModule { }

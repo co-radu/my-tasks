@@ -1,14 +1,13 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
-import { TaskService } from '../task.service';
-import { Task } from 'src/app/shared/models/task.model';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddTaskComponent } from './add-task/add-task.component';
-import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Router } from '@angular/router';
+import { Task } from 'src/app/shared/models/task.model';
+import { TaskService } from 'src/app/shared/services/task.service';
 import { DeleteTaskComponent } from './delete/delete-task.component';
 
 export interface DialogData {
-    task?: Task;
+    task: Task;
 }
 
 @Component({
@@ -50,25 +49,12 @@ export class TaskListComponent implements OnInit {
         );
     }
 
-    openDialog(task?: Task): void {
-        const dialogRef = this.dialog.open(AddTaskComponent, {
-            data: {
-                task: task ? task : ''
-            },
-        });
-        dialogRef.afterClosed().subscribe(
-            (returnTask: Task) => {
-                if (returnTask && task) {
-                    this.allTasks = [...this.allTasks.filter(
-                        (filterTask: Task) => filterTask.id !== returnTask.id
-                    ), returnTask];
-                    this.filterTasks();
-                } else if (returnTask && !task) {
-                    this.allTasks.push(returnTask);
-                    this.filterTasks();
-                }
-            }
-        );
+    newTask(): void {
+        this.router.navigate(['/add-task']);
+    }
+
+    editTask(task: Task): void {
+        this.router.navigate([`edit-task/${task.id}`]);
     }
 
     openDeleteDialog(task: Task): void {

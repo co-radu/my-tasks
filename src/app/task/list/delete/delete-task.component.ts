@@ -1,9 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { TaskService } from '../../task.service';
-import { Task } from 'src/app/shared/models/task.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Task } from 'src/app/shared/models/task.model';
+import { TaskService } from 'src/app/shared/services/task.service';
 import { DialogData } from '../task-list.component';
-import { TaskListComponent } from '../task-list.component';
 
 @Component({
     selector: 'delete-task',
@@ -14,6 +13,7 @@ import { TaskListComponent } from '../task-list.component';
 export class DeleteTaskComponent {
 
     public tasks: Task[] = [];
+
     constructor(
         private taskService: TaskService,
         public deleteDialogRef: MatDialogRef<DeleteTaskComponent>,
@@ -22,10 +22,10 @@ export class DeleteTaskComponent {
 
     deleteTask(task: Task): void {
         this.taskService.deleteTask(task).subscribe(
-            (taskIdDeleted: number) => {
+            () => {
                 this.deleteDialogRef.close(this.data.task.id);
             }, error => {
-                console.error('ERREUR' + error);
+                console.error(error);
             }
         );
     }

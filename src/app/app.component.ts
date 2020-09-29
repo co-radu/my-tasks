@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { TaskService } from './task/task.service';
-import { debounceTime } from 'rxjs/operators';
-import { Task } from './shared/models/task.model';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+import { TaskService } from './shared/services/task.service';
 
 @Component({
   selector: 'my-tasks-app',

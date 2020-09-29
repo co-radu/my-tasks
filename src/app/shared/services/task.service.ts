@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import { Observable, BehaviorSubject } from 'rxjs';
-
-import { Task } from '../shared/models/task.model';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Task } from '../models/task.model';
 
 @Injectable()
+
 export class TaskService {
 
     private url: string = environment.url;
@@ -15,23 +14,23 @@ export class TaskService {
     constructor(private http: HttpClient) { }
 
     getTasks(pageNumber: number): Observable<Task[]> {
-        return this.http.get<Task[]>(this.url + '/api/items/?page=' + pageNumber);
+        return this.http.get<Task[]>(`${this.url}/api/items/?page=${pageNumber}`);
     }
 
     getTask(id: number): Observable<Task> {
-        return this.http.get<Task>(this.url + '/api/items/' + id + '.json');
+        return this.http.get<Task>(`${this.url}/api/items/${id}.json`);
     }
 
     addTask(task: Task): Observable<Task> {
-        return this.http.post<Task>(this.url + '/api/items.json', task);
+        return this.http.post<Task>(`${this.url}/api/items.json`, task);
     }
 
     deleteTask(task: Task) {
-        return this.http.delete(this.url + '/api/items/' + task.id + '.json');
+        return this.http.delete(`${this.url}/api/items/${task.id}.json`);
     }
 
     editTask(task: Task): Observable<Task> {
-        return this.http.put<Task>(this.url + '/api/items/' + task.id + '.json', task);
+        return this.http.put<Task>(`${this.url}/api/items/${task.id}.json`, task);
     }
 
     setCurrentSearchString(searchString: string): void {
